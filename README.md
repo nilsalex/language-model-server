@@ -18,8 +18,8 @@ A small server for talking to the [google FLAN-T5](https://huggingface.co/docs/t
    ```
    $ python3 ./flan_t5_server.py google/flan-t5-small run
    ```
-4) The server now listens at port `5000`. Generate predictions by sending an HTTP request
-   with form data (`application/x-www-form-urlencoded` or `multipart/form-data`) to the endpoint `/`.
+4) The server now listens at port `5000`. Generate predictions by sending an HTTP `POST` request
+   with form data (`application/x-www-form-urlencoded`) to the endpoint `/`.
 
    The only required field is `text` for the prompt.
 
@@ -28,7 +28,7 @@ A small server for talking to the [google FLAN-T5](https://huggingface.co/docs/t
 
    The response is plain text (`text/plain`).
    ```
-   $ curl -w "\n" -XPOST http://localhost:5000/ -d max_tokens=100 -d text="Can the baby speak?"
+   $ curl http://localhost:5000/ -d max_tokens=100 -d text="Can the baby speak?"
    no
    ```
 5) If you only want to download the models, you can instead run
