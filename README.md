@@ -26,6 +26,10 @@ A small server for talking to the [google FLAN-T5](https://huggingface.co/docs/t
    $ curl -w "\n" -XPOST http://localhost:5000/ -d max_tokens=100 -d text="Can the baby speak?"
    no
    ```
+5) If you only want to download the models, you can instead run
+   ```
+   $ python3 ./flan_t5_server.py google/flan-t5-small init
+   ```
 
 ## Docker build
 
@@ -37,7 +41,7 @@ $ docker build \
     --build-arg MODEL_NAME=google/flan-t5-small \
     -t language-model-server:small \
     .
-$ docker run -p 5000:5000 languagemodel-server:small
+$ docker run -p 5000:5000 language-model-server:small
 ```
 
 Valid values for `MODEL_NAME` are
